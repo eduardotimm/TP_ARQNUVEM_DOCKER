@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  # Serviço 1: Customizado (buildado a partir do Dockerfile)
+  app_customizado:
+    # Indica ao Docker Compose para construir a imagem a partir do Dockerfile no diretório atual
+    build: .
+    image: meu-web-app:latest # Nome da imagem que será criada no passo 2
+    container_name: web_custom_c
+    ports:
+      - "8080:80" # Host 8080 -> Contêiner 80
+
+  # Serviço 2: Padrão (usa imagem pronta do Docker Hub)
+  app_padrao:
+    image: nginx:latest # Imagem padrão do Nginx
+    container_name: web_padrao_c
+    ports:
+      - "8081:80" # Host 8081 -> Contêiner 80
